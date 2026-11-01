@@ -11,7 +11,7 @@ Research scope: Bangladesh's nine general education boards only. Madrasah and Te
 | Dhaka Board result portal | https://result.dhakaeducationboard.gov.bd/v2/home | Dhaka-specific result form with EIIN field | Board-specific official subdomain; CAPTCHA present. |
 | Chattogram Board institution result | https://hscresult.bise-ctg.gov.bd/h22_31_x1_26/individual/index.php | Institution-wise / EIIN-wise HSC 2026 results | Board-specific portal; inspect its current form and terms before collection. |
 | Cumilla Board institution result | https://hscresult.comillaboard.gov.bd/EIIN/index.php | Institute-wise HSC-2026 result page | Board-specific result page discovered; validate current accessibility and output. |
-| BANBEIS college files | https://banbeis.gov.bd/pages/files/6919975c933eb65569ddc4e2 | Official college list and school-and-college list downloads | Candidate authoritative source for institution universe/EIIN mapping. Download and inspect file before using; page does not itself establish the current file's completeness. |
+| BANBEIS college files | https://banbeis.gov.bd/pages/files/6919975c933eb65569ddc4e2 | Official college list and school-and-college list downloads | The college-list attachment resolves to an XLSX file: https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/office-banbeis/2024/12/a0d40aa893c44734ba37901c9dd9fdb7.xlsx. Download and inspect its date, board coverage, and EIIN fields before treating it as the current universe. |
 | BANBEIS downloads | https://banbeis.gov.bd/pages/downloads | Lists college-related downloads | Official catalogue; locate exact downloadable file and record its publication date/version. |
 
 ## HSC 2026 nine-board aggregate (provisional)
