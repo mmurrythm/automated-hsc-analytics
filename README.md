@@ -108,3 +108,22 @@ tests/                  unit tests
 ## Disclaimer
 
 This is an independent research project, not an official publication of the Bangladesh Education Boards. Rankings depend on the completeness and comparability of published data. Every result should be traceable to its source and checked before publication.
+
+
+
+## Board websites and common result portals
+
+The nine official board homepages supplied for this project are recorded in `config/boards.json`. A board homepage is a discovery starting point, not necessarily the result endpoint.
+
+The common result interfaces currently verified are:
+- Government-hosted: https://www.educationboardresults.gov.bd/v2/home
+- Web-based result system: https://www.eboardresults.com/v2/home
+
+Both forms expose board, examination, year, result type, EIIN, and CAPTCHA fields. The government-hosted form identifies the Inter-Education Board Coordination Committee and says result information is maintained by the respective board. Institution-result retrieval therefore remains a human-assisted step where CAPTCHA is required.
+
+Board-specific result links verified so far:
+- Dhaka: https://result.dhakaeducationboard.gov.bd/v2/home
+- Chattogram: https://hscresult.bise-ctg.gov.bd/h22_31_x1_26/individual/index.php (includes an EIIN-wise result link)
+- Sylhet: https://result.sylhetboard.gov.bd/v2/home
+
+For the other six boards, use the official homepage in the configuration to locate the current HSC result notice/service. Add a board-specific endpoint only after checking that it is operated or linked by the relevant board. The 27 October 2026 BSS announcement confirms that institutions can download complete result sheets from common education-board sites and respective board websites using EIIN: https://www.bssnews.net/news/439086.
