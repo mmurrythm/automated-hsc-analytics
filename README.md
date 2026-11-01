@@ -40,7 +40,9 @@ python -m hsc_analytics.cli validate-config
 
 ### Prepare an institution directory
 
-Create `data/input/colleges.csv` with columns:
+The working institution frame is based on the BANBEIS 2022 college workbook. The project retains only records whose `INSTITUTE LEVEL` is `HIGHER SECONDARY` (1,400 candidate institutions across nine boards). The historical snapshot is intentionally the main frame; the assumption that newer colleges are unlikely to change the rankings materially is documented in `docs/banbeis-workbook-audit.md`. Use the filtered file `data/input/banbeis_higher_secondary_eiin_directory_2022.csv` as the starting directory and verify HSC 2026 participation from result records.
+
+Create or adapt `data/input/colleges.csv` with columns:
 
 ```csv
 board_code,college_name,eiin,source_url
