@@ -1,0 +1,8 @@
+{
+  "top_n_per_board": 20,
+  "minimum_appeared": 0,
+  "metrics": ["gpa5_count", "gpa5_rate", "pass_rate"],
+  "primary_sort": "gpa5_count",
+  "tie_breakers": ["pass_rate", "appeared", "college_name"],
+  "warning": "Publish all three rankings. GPA-5 count measures scale; rates measure outcomes. Disclose any minimum candidate threshold."
+}
