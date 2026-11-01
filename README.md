@@ -40,13 +40,13 @@ python -m hsc_analytics.cli validate-config
 
 ### Prepare an institution directory
 
-The working institution frame is based on the BANBEIS 2022 college workbook. The project retains only records whose `INSTITUTE LEVEL` is `HIGHER SECONDARY` (1,400 candidate institutions across nine boards). The historical snapshot is intentionally the main frame; the assumption that newer colleges are unlikely to change the rankings materially is documented in `docs/banbeis-workbook-audit.md`. Recreate the filtered directory from the workbook with:
+The working institution frame is based on the BANBEIS 2022 college workbook. The project retains **all 3,321 college records** in the 2022 workbook across the nine general boards. `INSTITUTE LEVEL` is descriptive metadata, not an eligibility filter: Degree, Honours, and Masters-level institutions are retained because the institution's highest recorded level does not establish that it lacks HSC activity. The 2022 snapshot is a historical sampling frame, not a complete 2026 census. The assumption that newer colleges are unlikely to materially alter rankings is a documented, untested limitation in `docs/banbeis-workbook-audit.md`. Recreate the full directory with:
 
 ```bash
 python scripts/build_banbeis_directory.py /path/to/banbeis_college_list_2022.xlsx
 ```
 
-This writes `data/input/banbeis_higher_secondary_eiin_directory_2022.csv` and a board summary. Verify HSC 2026 participation from result records before treating every listed institution as a confirmed participant.
+This writes `data/input/banbeis_college_eiin_directory_2022.csv` (all colleges) and `data/processed/banbeis_college_board_summary_2022.csv`. The output includes `higher_secondary_level_flag` for descriptive analysis. Verify HSC 2026 participation from official result records before treating any listed institution as a confirmed participant.
 
 Create or adapt `data/input/colleges.csv` with columns:
 
@@ -74,12 +74,12 @@ Where published: registered, appeared, passed, failed, GPA-5, board, college, EI
 
 ## Official portal discovery
 
-Three portals have been verified during initial research:
+Board-specific result and statistics endpoints identified during initial research are recorded in `config/boards.json`. Key links include:
 - Dhaka: https://result.dhakaeducationboard.gov.bd/v2/home
 - Chattogram: https://hscresult.bise-ctg.gov.bd/h22_31_x1_26/individual/index.php
 - Sylhet: https://result.sylhetboard.gov.bd/v2/home
 
-The remaining portal addresses are intentionally left blank in the config until confirmed from the relevant board's official website. Do not guess subdomains or endpoints.
+Some boards publish consolidated statistics PDFs while others expose EIIN-based interactive result services. A discovered link is not evidence that its contents have been downloaded or parsed. Do not guess subdomains or endpoints; keep unconfirmed links null.
 
 The central results portal is https://www.educationboardresults.gov.bd/v2/home. The BSS announcement on 27 October 2026 stated that HSC 2026 results would be published on 31 October 2026 and that institutions could obtain complete result sheets through the common or respective board websites using EIIN. Verify availability and the exact report format at runtime.
 
@@ -129,9 +129,14 @@ The common result interfaces currently verified are:
 
 Both forms expose board, examination, year, result type, EIIN, and CAPTCHA fields. The government-hosted form identifies the Inter-Education Board Coordination Committee and says result information is maintained by the respective board. Institution-result retrieval therefore remains a human-assisted step where CAPTCHA is required.
 
-Board-specific result links verified so far:
-- Dhaka: https://result.dhakaeducationboard.gov.bd/v2/home
-- Chattogram: https://hscresult.bise-ctg.gov.bd/h22_31_x1_26/individual/index.php (includes an EIIN-wise result link)
-- Sylhet: https://result.sylhetboard.gov.bd/v2/home
+Board-specific sources identified so far:
+- Dhaka result portal: https://result.dhakaeducationboard.gov.bd/v2/home
+- Rajshahi HSC statistics page: https://rajshahieducationboard.gov.bd/pages/static-pages/691997b2933eb65569dde245
+- Jashore HSC Corner / statistics notice: https://www.jessoreboard.gov.bd/index.php/site/notice/6/index.php
+- Cumilla institution-wise result information: https://web.comillaboard.gov.bd/bisecb/eseba_details/10
+- Chattogram EIIN-wise result: https://hscresult.bise-ctg.gov.bd/h22_31_x1_26/individual/index.php
+- Sylhet result portal: https://result.sylhetboard.gov.bd/v2/home
+- Dinajpur result portal: https://results.dinajpurboard.gov.bd/
+- Mymensingh board homepage / result analytics discovery: https://www.mymensingheducationboard.gov.bd/
 
-For the other six boards, use the official homepage in the configuration to locate the current HSC result notice/service. Add a board-specific endpoint only after checking that it is operated or linked by the relevant board. The 27 October 2026 BSS announcement confirms that institutions can download complete result sheets from common education-board sites and respective board websites using EIIN: https://www.bssnews.net/news/439086.
+Barishal's consolidated 2026 institution statistics endpoint still requires confirmation. Rajshahi and Jashore pages list 2026 statistics material, but institution-level records have not yet been extracted. The 27 October 2026 BSS announcement confirms that institutions can download complete result sheets from common education-board sites and respective board websites using EIIN: https://www.bssnews.net/news/439086.
