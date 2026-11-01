@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Build the project's 2022 BANBEIS Higher Secondary-only EIIN directory.
+"""Build the project's 2022 BANBEIS complete nine-board college EIIN directory.
 
 Input: BANBEIS college-list XLSX workbook, worksheet 'clg', header row 2.
-Output: filtered CSV and board summary CSV.
+Output: all-college CSV and board summary CSV. All institute levels are retained.
 """
 from __future__ import annotations
 
@@ -41,10 +41,10 @@ def build(input_xlsx: Path, output_csv: Path, summary_csv: Path) -> None:
     if unmapped:
         raise ValueError(f"Unmapped district labels: {unmapped}")
 
-    level = source["INSTITUTE LEVEL"].astype(str).str.strip().str.upper()
-    selected = source.loc[level.eq("HIGHER SECONDARY")].copy()
+    # Retain every college row; institute level is descriptive metadata.
+    selected = source.copy()
     selected["board_name"] = selected["board_code"].map(BOARD_NAMES)
-    selected["higher_secondary_level_flag"] = True
+    selected["higher_secondary_level_flag"] = source["INSTITUTE LEVEL"].astype(str).str.strip().str.upper().eq("HIGHER SECONDARY")
 
     result = selected.rename(columns={
         "DISTRICT": "district_source", "UPAZILA/THANA": "upazila_thana",
@@ -65,24 +65,25 @@ def build(input_xlsx: Path, output_csv: Path, summary_csv: Path) -> None:
     ]
     result = result[columns].sort_values(["board_code", "district_source", "eiin"])
     if result["eiin"].duplicated().any():
-        raise ValueError("Duplicate EIINs found after filtering")
+        raise ValueError("Duplicate EIINs found in the nine-board college frame")
 
     output_csv.parent.mkdir(parents=True, exist_ok=True)
     summary_csv.parent.mkdir(parents=True, exist_ok=True)
     result.to_csv(output_csv, index=False, encoding="utf-8-sig")
     summary = result.groupby(["board_code", "board_name"]).agg(
-        higher_secondary_institutions=("eiin", "nunique"),
+        college_records=("eiin", "nunique"),
+        explicitly_higher_secondary_labelled=("higher_secondary_level_flag", "sum"),
         districts=("district_source", "nunique"),
     ).reset_index()
     summary.to_csv(summary_csv, index=False, encoding="utf-8-sig")
-    print(f"Wrote {len(result)} institutions to {output_csv}")
+    print(f"Wrote {len(result)} colleges to {output_csv}")
     print(summary.to_string(index=False))
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("workbook", type=Path, help="Path to the BANBEIS 2022 XLSX workbook")
-    parser.add_argument("--output", type=Path, default=Path("data/input/banbeis_higher_secondary_eiin_directory_2022.csv"))
-    parser.add_argument("--summary", type=Path, default=Path("data/processed/banbeis_higher_secondary_board_summary_2022.csv"))
+    parser.add_argument("--output", type=Path, default=Path("data/input/banbeis_college_eiin_directory_2022.csv"))
+    parser.add_argument("--summary", type=Path, default=Path("data/processed/banbeis_college_board_summary_2022.csv"))
     args = parser.parse_args()
     build(args.workbook, args.output, args.summary)
