@@ -6,79 +6,90 @@
     {
       "code": "dhaka",
       "name": "Dhaka",
-      "portal_url": "https://result.dhakaeducationboard.gov.bd/v2/home",
-      "portal_status": "verified_initial_research",
-      "official_website": "https://dhakaeducationboard.gov.bd/"
+      "official_website": "https://dhakaeducationboard.gov.bd/",
+      "institution_result_url": "https://result.dhakaeducationboard.gov.bd/v2/home",
+      "statistics_url": null,
+      "source_status": "official_result_portal_identified"
     },
     {
       "code": "rajshahi",
       "name": "Rajshahi",
-      "portal_url": null,
-      "portal_status": "needs_official_verification",
-      "official_website": "https://rajshahiboard.gov.bd/"
+      "official_website": "https://rajshahiboard.gov.bd/",
+      "institution_result_url": null,
+      "statistics_url": "https://rajshahieducationboard.gov.bd/pages/static-pages/691997b2933eb65569dde245",
+      "source_status": "official_2026_statistics_page_identified"
     },
     {
       "code": "cumilla",
       "name": "Cumilla",
-      "portal_url": null,
-      "portal_status": "needs_official_verification",
-      "official_website": "http://comillaboard.portal.gov.bd/"
+      "official_website": "http://comillaboard.portal.gov.bd/",
+      "institution_result_url": "https://web.comillaboard.gov.bd/bisecb/eseba_details/10",
+      "statistics_url": null,
+      "source_status": "official_institution_result_service_identified_link_needs_runtime_check"
     },
     {
       "code": "jashore",
       "name": "Jashore",
-      "portal_url": null,
-      "portal_status": "needs_official_verification",
-      "official_website": "https://www.jessoreboard.gov.bd/"
+      "official_website": "https://www.jessoreboard.gov.bd/",
+      "institution_result_url": null,
+      "statistics_url": "https://www.jessoreboard.gov.bd/index.php/site/notice/6/index.php",
+      "source_status": "official_2026_statistics_notice_identified"
     },
     {
       "code": "chattogram",
       "name": "Chattogram",
-      "portal_url": "https://hscresult.bise-ctg.gov.bd/h22_31_x1_26/individual/index.php",
-      "portal_status": "verified_initial_research",
-      "official_website": "https://web.bise-ctg.gov.bd/"
+      "official_website": "https://web.bise-ctg.gov.bd/",
+      "institution_result_url": "https://hscresult.bise-ctg.gov.bd/h22_31_x1_26/individual/index.php",
+      "statistics_url": null,
+      "source_status": "official_eiin_wise_result_service_identified"
     },
     {
       "code": "barishal",
       "name": "Barishal",
-      "portal_url": null,
-      "portal_status": "needs_official_verification",
-      "official_website": "https://barisalboard.org/"
+      "official_website": "https://barisalboard.org/",
+      "institution_result_url": null,
+      "statistics_url": null,
+      "source_status": "official_homepage_only_statistics_endpoint_unconfirmed"
     },
     {
       "code": "sylhet",
       "name": "Sylhet",
-      "portal_url": "https://result.sylhetboard.gov.bd/v2/home",
-      "portal_status": "verified_initial_research",
-      "official_website": "https://sylhetboard.gov.bd/"
+      "official_website": "https://sylhetboard.gov.bd/",
+      "institution_result_url": "https://result.sylhetboard.gov.bd/v2/home",
+      "statistics_url": null,
+      "source_status": "official_result_portal_identified_captcha_present"
     },
     {
       "code": "dinajpur",
       "name": "Dinajpur",
-      "portal_url": null,
-      "portal_status": "needs_official_verification",
-      "official_website": "https://dinajpurboard.gov.bd/"
+      "official_website": "https://dinajpurboard.gov.bd/",
+      "institution_result_url": "https://results.dinajpurboard.gov.bd/",
+      "statistics_url": null,
+      "source_status": "official_result_portal_identified"
     },
     {
       "code": "mymensingh",
       "name": "Mymensingh",
-      "portal_url": null,
-      "portal_status": "needs_official_verification",
-      "official_website": "https://www.mymensingheducationboard.gov.bd/"
+      "official_website": "https://www.mymensingheducationboard.gov.bd/",
+      "institution_result_url": "https://www.mymensingheducationboard.gov.bd/",
+      "statistics_url": null,
+      "source_status": "official_result_analytics_service_discovery"
     }
   ],
   "central_portal_url": "https://www.educationboardresults.gov.bd/v2/home",
-  "notes": [
-    "Only nine general education boards are included; Madrasah and Technical are excluded.",
-    "Verify portal URL, report type, CAPTCHA requirements, and data definitions before collection.",
-    "Do not assume all boards share the same form or HTML structure.",
-    "Official board homepages supplied by project owner; result endpoint is not assumed to be the homepage.",
-    "Common result system exposes board, exam, year, result type, EIIN and CAPTCHA fields. Confirm institution analytics availability in the selected portal before scraping."
-  ],
   "alternative_central_portal_url": "https://www.eboardresults.com/v2/home",
   "central_portal_features": [
     "EIIN institution lookup",
     "institution result",
     "CAPTCHA required"
+  ],
+  "notes": [
+    "Only nine general education boards are included; Madrasah and Technical are excluded.",
+    "All 3,321 colleges in the BANBEIS 2022 frame are retained; INSTITUTE LEVEL is descriptive metadata, not an eligibility filter.",
+    "A directory entry does not confirm HSC 2026 participation. Confirm participation from official result records.",
+    "Keep missing statistics as null; never convert unknown values to zero.",
+    "Do not assume all boards share the same form or HTML structure.",
+    "Do not bypass CAPTCHA, authentication, or other access controls.",
+    "A discovered page or endpoint is not evidence that its data have been downloaded, parsed, or validated."
   ]
 }
