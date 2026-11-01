@@ -2,7 +2,7 @@
 
 Research pipeline for collecting, validating, ranking, and comparing institution-level HSC 2026 statistics from Bangladesh's **nine general education boards**.
 
-> **Status: scaffold / verification in progress.** This repository does not yet contain a verified 180-college dataset. Board portals differ, and some require CAPTCHA or interactive downloads. The pipeline is deliberately conservative: it does not bypass CAPTCHA, authentication, or other access controls.
+> **Status: scaffold / verification in progress.** This repository does not yet contain a verified institution-level HSC 2026 dataset. Board portals differ, and some require CAPTCHA or interactive downloads. The pipeline is deliberately conservative: it does not bypass CAPTCHA, authentication, or other access controls.
 
 ## Scope
 
