@@ -3,20 +3,82 @@
   "year": 2026,
   "scope": "nine_general_education_boards",
   "boards": [
-    {"code":"dhaka","name":"Dhaka","portal_url":"https://result.dhakaeducationboard.gov.bd/v2/home","portal_status":"verified_initial_research"},
-    {"code":"rajshahi","name":"Rajshahi","portal_url":null,"portal_status":"needs_official_verification"},
-    {"code":"cumilla","name":"Cumilla","portal_url":null,"portal_status":"needs_official_verification"},
-    {"code":"jashore","name":"Jashore","portal_url":null,"portal_status":"needs_official_verification"},
-    {"code":"chattogram","name":"Chattogram","portal_url":"https://hscresult.bise-ctg.gov.bd/h22_31_x1_26/individual/index.php","portal_status":"verified_initial_research"},
-    {"code":"barishal","name":"Barishal","portal_url":null,"portal_status":"needs_official_verification"},
-    {"code":"sylhet","name":"Sylhet","portal_url":"https://result.sylhetboard.gov.bd/v2/home","portal_status":"verified_initial_research"},
-    {"code":"dinajpur","name":"Dinajpur","portal_url":null,"portal_status":"needs_official_verification"},
-    {"code":"mymensingh","name":"Mymensingh","portal_url":null,"portal_status":"needs_official_verification"}
+    {
+      "code": "dhaka",
+      "name": "Dhaka",
+      "portal_url": "https://result.dhakaeducationboard.gov.bd/v2/home",
+      "portal_status": "verified_initial_research",
+      "official_website": "https://dhakaeducationboard.gov.bd/"
+    },
+    {
+      "code": "rajshahi",
+      "name": "Rajshahi",
+      "portal_url": null,
+      "portal_status": "needs_official_verification",
+      "official_website": "https://rajshahiboard.gov.bd/"
+    },
+    {
+      "code": "cumilla",
+      "name": "Cumilla",
+      "portal_url": null,
+      "portal_status": "needs_official_verification",
+      "official_website": "http://comillaboard.portal.gov.bd/"
+    },
+    {
+      "code": "jashore",
+      "name": "Jashore",
+      "portal_url": null,
+      "portal_status": "needs_official_verification",
+      "official_website": "https://www.jessoreboard.gov.bd/"
+    },
+    {
+      "code": "chattogram",
+      "name": "Chattogram",
+      "portal_url": "https://hscresult.bise-ctg.gov.bd/h22_31_x1_26/individual/index.php",
+      "portal_status": "verified_initial_research",
+      "official_website": "https://web.bise-ctg.gov.bd/"
+    },
+    {
+      "code": "barishal",
+      "name": "Barishal",
+      "portal_url": null,
+      "portal_status": "needs_official_verification",
+      "official_website": "https://barisalboard.org/"
+    },
+    {
+      "code": "sylhet",
+      "name": "Sylhet",
+      "portal_url": "https://result.sylhetboard.gov.bd/v2/home",
+      "portal_status": "verified_initial_research",
+      "official_website": "https://sylhetboard.gov.bd/"
+    },
+    {
+      "code": "dinajpur",
+      "name": "Dinajpur",
+      "portal_url": null,
+      "portal_status": "needs_official_verification",
+      "official_website": "https://dinajpurboard.gov.bd/"
+    },
+    {
+      "code": "mymensingh",
+      "name": "Mymensingh",
+      "portal_url": null,
+      "portal_status": "needs_official_verification",
+      "official_website": "https://www.mymensingheducationboard.gov.bd/"
+    }
   ],
   "central_portal_url": "https://www.educationboardresults.gov.bd/v2/home",
   "notes": [
     "Only nine general education boards are included; Madrasah and Technical are excluded.",
     "Verify portal URL, report type, CAPTCHA requirements, and data definitions before collection.",
-    "Do not assume all boards share the same form or HTML structure."
+    "Do not assume all boards share the same form or HTML structure.",
+    "Official board homepages supplied by project owner; result endpoint is not assumed to be the homepage.",
+    "Common result system exposes board, exam, year, result type, EIIN and CAPTCHA fields. Confirm institution analytics availability in the selected portal before scraping."
+  ],
+  "alternative_central_portal_url": "https://www.eboardresults.com/v2/home",
+  "central_portal_features": [
+    "EIIN institution lookup",
+    "institution result",
+    "CAPTCHA required"
   ]
 }
